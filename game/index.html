@@ -10,20 +10,24 @@
     <title>Game</title>
 </head>
 <body>
-
+<section>
     <div class="row">
         <div class="col-sm">
+            <div class="container">
             <div class="img-magnifier-container">
                 <img src="./src/img.jpeg" alt="img" id = "mainimage" width="600" height="600">
               </div>
-            
+            </div>
         </div>
         <div class="col-sm">
-            <div class="row">
-                <div class="col-8 col-sm-3">
-                 <button id="Magnifier" onclick="switchMag()">Magnifier</button>
+            <div class="row topSection">
+                <div class="col-8 col-sm-3 container">
+                 <button class="button-81" id="Magnifier" onclick="switchMag()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+                   Magnifier</button>
                 </div>
-                <div class="col-4 col-sm-6">
+                <div class="col-4 col-sm-6 container">
                     <div class="wrapper">
                         <h1>Timer</h1>
                         <p><span id="mins">00</span>:<span id="seconds">00</span>:<span id="tens">00</span></p>
@@ -33,7 +37,7 @@
                     </div>
                 </div>
             
-            <div id="answers">
+            <div id="answers" class="container">
         
 
                 <!-- One "tab" for each step in the form: -->
@@ -76,9 +80,9 @@
                 
                 <div style="overflow:auto;">
                   <div style="float:right;">
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    <button type="button" id="submitBtn" style="display: none;" onclick="submitAns()">Submit</button>
+                    <button class="crtBtn" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button class="crtBtn" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    <button class="crtBtn" type="button" id="submitBtn" style="display: none;" onclick="submitAns()">Submit</button>
                   </div>
                 </div>
                 
@@ -95,6 +99,8 @@
                 
         </div>
       </div>
+    </section>
+      
      <script src="./js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
