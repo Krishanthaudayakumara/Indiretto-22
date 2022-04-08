@@ -4,7 +4,7 @@ var answers = [...new Set(answers)];
 
 
 
-var mark = 0;
+var mark=0,finalMark = 0;
 
 //.toLocaleLowerCase().replace(/\s/g, '')
 var movies = [
@@ -20,5 +20,7 @@ for(let i = 0; i<correctAnswers.length; i++){
     }
    
 }
-document.getElementsByTagName("div")[0].innerHTML = "Answers(no space, lowercase):"+answers+"<br>time:"+timeDur+"<br>Marks:"+mark;
+
+finalMark = (1/timeDur * mark*5)+mark;
+document.getElementsByTagName("div")[0].innerHTML = "Answers(no space, lowercase):"+answers+"<br>time:"+timeDur+"<br>Marks:"+finalMark;
 console.log(mark);
