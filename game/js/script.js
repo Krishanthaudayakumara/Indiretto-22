@@ -1,3 +1,6 @@
+var game_over = localStorage.getItem('game_over');
+if(game_over) window.location.replace("./evaluate.html"); 
+
 window.onload = function () {
   // document.addEventListener('contextmenu', event => event.preventDefault());
   var totalSecs = localStorage.getItem('totalSecs');
@@ -228,8 +231,12 @@ function submitAns(){
   const answers = [];
   var inputBox = document.getElementsByTagName("input");
   for(var i = 0; i<20; i++){
-    answers[i]=inputBox[i].value;
+    answers[i]=inputBox[i].value.toLocaleLowerCase().replace(/\s/g, '');
   }
   console.log(answers);
-  window.location.replace("http://stackoverflow.com");
+
+  localStorage.setItem("my_answers", JSON.stringify(answers)); //store colors
+  localStorage.setItem("game_over",true);
+
+  window.location.replace("./evaluate.html");
 }
