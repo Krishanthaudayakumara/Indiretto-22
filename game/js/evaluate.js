@@ -1,8 +1,8 @@
 var answers = JSON.parse(localStorage.getItem("my_answers")); //get them back
-
+var timeDur = localStorage.getItem("totalSecs");
 var answers = [...new Set(answers)];
 
-document.getElementsByTagName("div")[0].innerHTML = answers;
+
 
 var mark = 0;
 
@@ -20,5 +20,5 @@ for(let i = 0; i<correctAnswers.length; i++){
     }
    
 }
-
+document.getElementsByTagName("div")[0].innerHTML = "Answers(no space, lowercase):"+answers+"<br>time:"+timeDur+"<br>Marks:"+mark;
 console.log(mark);
