@@ -216,12 +216,15 @@ var activeMag = false;
 function switchMag(){
   var glass;
   if(activeMag) {
-   
+    document.getElementsByClassName("button-81")[0].style.backgroundColor = ""
+    document.getElementsByClassName("button-81")[0].style.color = ""
     glass = document.getElementsByClassName("img-magnifier-glass");
     glass[0].parentNode.removeChild(glass[0]);
     activeMag = false;
   }
   else {
+    document.getElementsByClassName("button-81")[0].style.backgroundColor = "black"
+    document.getElementsByClassName("button-81")[0].style.color = "white"
     magnify("mainimage", 2);
     activeMag = true;
   }
