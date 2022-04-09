@@ -2,7 +2,7 @@ body{
     background-image: url("../img/bg.jpg");
     background-position:center;
     background-repeat: no-repeat;
-    background-size:auto;
+    background-size:cover;
     background-attachment: fixed;
     height: auto;
 }
@@ -32,6 +32,17 @@ p{
     color: wheat;
     border-radius: 50px;
 }
+
+@media (max-width: 768px) {
+    
+    p{
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+    .logo{
+        width: 300px;
+    }
+  }
 
 
 
