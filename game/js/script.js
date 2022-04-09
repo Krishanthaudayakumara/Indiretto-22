@@ -20,7 +20,7 @@ window.onload = function () {
   }
      
 
-  var timeLimit = 60; //seconds
+  var timeLimit = 600; //seconds
   var mins = Math.floor(totalSecs/60);
   var seconds = totalSecs - (mins*60); 
   var tens = 00; 
