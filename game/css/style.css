@@ -40,6 +40,11 @@ input {
   }
 
 
+  #mainimage{
+    border: 3px solid gray;
+    border-radius: 6px;
+  }
+
   .img-magnifier-container {
     position:relative;
   }
@@ -50,8 +55,8 @@ input {
     border-radius: 50%;
     cursor: none;
     /*Set the size of the magnifier glass:*/
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     box-shadow: 4px -4px 19px 13px rgba(0,0,0,0.75);
     -webkit-box-shadow: 4px -4px 19px 13px rgba(0,0,0,0.75);
     -moz-box-shadow: 4px -4px 19px 13px rgba(0,0,0,0.75);

@@ -1,8 +1,17 @@
 var game_over = localStorage.getItem('game_over');
+var savedAns = JSON.parse(localStorage.getItem("saved_ans"));
+if(savedAns){
+  var inputBox = document.getElementsByTagName("input");
+  for(var i = 0; i<20; i++){
+    inputBox[i].value = savedAns[i];
+  }
+}
+
+
 if(game_over) window.location.replace("./evaluate.html"); 
 
 window.onload = function () {
-  document.addEventListener('contextmenu', event => event.preventDefault());
+ // document.addEventListener('contextmenu', event => event.preventDefault());
   var totalSecs = localStorage.getItem('totalSecs');
   if(totalSecs){
     console.log("Total secs",totalSecs);
@@ -11,10 +20,13 @@ window.onload = function () {
   }
      
 
-
+  var timeLimit = 600; //seconds
   var mins = Math.floor(totalSecs/60);
   var seconds = totalSecs - (mins*60); 
   var tens = 00; 
+  var disSec = 59 - seconds;
+  var disMin = Math.floor((timeLimit-disSec)/60)-mins;
+  
   
   var appendTens = document.getElementById("tens");
   var appendSeconds = document.getElementById("seconds");
@@ -28,47 +40,58 @@ window.onload = function () {
 
   clearInterval(Interval);
   Interval = setInterval(startTimer, 10);
+
+  function alertTime(){
+    if(totalSecs>(timeLimit-10)){
+      document.getElementsByClassName("wrapper")[0].childNodes[3].style.color = "red";
+    }
+  }
+  
     
 
   function startTimer () {
     tens++;
+    var disTens = 99-tens;
     
-    if(tens <= 9){
-      appendTens.innerHTML = "0" + tens;
+    if(disTens <= 9){
+      appendTens.innerHTML = "0" + disTens;
     }
     
-    if (tens > 9){
-      appendTens.innerHTML = tens;
+    if (disTens > 9){
+      appendTens.innerHTML = disTens;
       
     } 
     
     if (tens > 99) {
       console.log("seconds");
       seconds++;
+      disSec = 60 - seconds;
       totalSecs++;
       localStorage.setItem("totalSecs", totalSecs);
-      appendSeconds.innerHTML = "0" + seconds;
+      appendSeconds.innerHTML = "0" + disSec;
       tens = 0;
       appendTens.innerHTML = "0" + 0;
     }
     
-    if (seconds > 9){
-      appendSeconds.innerHTML = seconds;
+    if (disSec > 9){
+      appendSeconds.innerHTML = disSec;
     }
     
     if(seconds > 59){
         console.log("mins");
         mins++;
-        if(mins<10) appendMins.innerHTML = "0" + mins;
-        else if(mins>9) appendMins.innerHTML = mins;
+        disMin = Math.floor(timeLimit/60)-mins;
+        if(disMin<10) appendMins.innerHTML = "0" + disMin;
+        else if(disMin>9) appendMins.innerHTML = disMin;
         seconds = 0;
         appendSeconds.innerHTML = "0" + 0;
     }
+    alertTime();
   }
 
   function setinTime(){
-    appendSeconds.innerHTML = seconds;
-    appendMins.innerHTML = mins;
+    appendSeconds.innerHTML = disSec;
+    appendMins.innerHTML = disMin;
   }
 }
 
@@ -119,6 +142,14 @@ function nextPrev(n) {
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
+
+  var answers=[]
+  var inputBox = document.getElementsByTagName("input");
+  for(var i = 0; i<20; i++){
+    answers[i]=inputBox[i].value;
+  }
+  localStorage.setItem("saved_ans", JSON.stringify(answers));
+
 }
 
 
@@ -238,7 +269,7 @@ function submitAns(){
   }
   console.log(answers);
 
-  localStorage.setItem("my_answers", JSON.stringify(answers)); //store colors
+  localStorage.setItem("my_answers", JSON.stringify(answers)); //store ans
   localStorage.setItem("game_over",true);
 
   window.location.replace("./evaluate.html");
