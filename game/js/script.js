@@ -20,7 +20,7 @@ window.onload = function () {
   }
      
 
-  var timeLimit = 600; //seconds
+  var timeLimit = 60; //seconds
   var mins = Math.floor(totalSecs/60);
   var seconds = totalSecs - (mins*60); 
   var tens = 00; 
@@ -72,6 +72,11 @@ window.onload = function () {
       appendSeconds.innerHTML = "0" + disSec;
       tens = 0;
       appendTens.innerHTML = "0" + 0;
+
+      if(totalSecs>(timeLimit-10) && totalSecs<timeLimit){
+        var beep =new Audio("./src/beep.mp3");
+        beep.play();
+      }
     }
     
     if (disSec > 9){
