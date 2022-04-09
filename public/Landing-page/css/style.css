@@ -81,7 +81,7 @@ p{
     vertical-align: middle;
     width: auto;
     word-break: keep-all;
-    z-index: 0;
+    z-index: 1000;
   }
   
   @media (min-width: 768px) {
