@@ -45,6 +45,7 @@ window.onload = function () {
     if(totalSecs>(timeLimit-10)){
       document.getElementsByClassName("wrapper")[0].childNodes[3].style.color = "red";
     }
+    if(totalSecs>=timeLimit) submitAns();
   }
   
     
@@ -143,16 +144,17 @@ function nextPrev(n) {
   // Otherwise, display the correct tab:
   showTab(currentTab);
 
+}
+
+function saveAns()
+{
   var answers=[]
   var inputBox = document.getElementsByTagName("input");
   for(var i = 0; i<20; i++){
     answers[i]=inputBox[i].value;
   }
   localStorage.setItem("saved_ans", JSON.stringify(answers));
-
 }
-
-
 
 function validateForm() {
   // This function deals with validation of the form fields

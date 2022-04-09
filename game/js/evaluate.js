@@ -21,7 +21,7 @@ for(let i = 0; i<correctAnswers.length; i++){
    
 }
 
-finalMark = (1/timeDur * mark*5)+mark;
+finalMark = (1/timeDur * mark*10)+mark;
 //for 10 mins, range 0 - 1.0083 - 1 - 120
 document.getElementsByTagName("div")[0].innerHTML = "Answers(no space, lowercase):"+answers+"<br>time:"+timeDur+"<br>Marks:"+finalMark;
 console.log(mark);
